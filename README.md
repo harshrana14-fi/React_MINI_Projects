@@ -30,7 +30,7 @@ For every project, I will:
 
 | Day | Project     | Status           | Live Demo                      | 
 | --- | ----------- | ---------------- | ------------------------------ |
-| 1   | Notes App   | 🚧 Buiding      | https://notesdesk-xi.vercel.app/| 
+| 1   | Notes App   |  Completed       | https://notesdesk-xi.vercel.app/| 
 | 2   | Coming Soon | ⏳              | -                               | 
 | 3   | Coming Soon | ⏳              | -                               | 
 | 4   | Coming Soon | ⏳              | -                               | 
