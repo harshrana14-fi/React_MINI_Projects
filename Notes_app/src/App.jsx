@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import NoteForm from "./components/NoteForm";
 import NoteList from "./components/NoteList";
@@ -6,7 +6,11 @@ import SearchBar from "./components/SearchBar";
 import "./index.css";
 
 function App() {
-  const[notes, setNotes] = useState([])
+  const [notes, setNotes] = useState(() => {
+  const storedNotes = localStorage.getItem("notes");
+
+  return storedNotes ? JSON.parse(storedNotes) : [];
+});
   
   const addNote = (noteData) => {
     setNotes((prevNotes) => {
@@ -40,6 +44,20 @@ function App() {
     })
     setEditingNote(null)
   }
+
+  useEffect(() => {
+  localStorage.setItem("notes", JSON.stringify(notes));
+}, [notes]);
+
+//   useEffect(() => {
+
+//   const storedNotes = localStorage.getItem("notes");
+
+//   if (storedNotes) {
+//     const parsedNotes = JSON.parse(storedNotes);
+//     setNotes(parsedNotes);
+//   }
+// }, []);
 
   return (
     <div className="h-screen  w-full">
