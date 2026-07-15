@@ -1,7 +1,7 @@
 import React from 'react'
 import NoteCard from './NoteCard'
 
-function NoteList({notes, deleteNote}) {
+function NoteList({notes, deleteNote, editNote}) {
   return (
     <div id='notes' className='w-full bg-gray-900 px-10 pb-10 text-white flex flex-col gap-2.5'>
         <div className='flex justify-between'>
@@ -15,6 +15,7 @@ function NoteList({notes, deleteNote}) {
                     key={note.id}
                     note = {note}
                     deleteNote={deleteNote}
+                    editNote={editNote}
                 />
             ))
         }

@@ -8,9 +8,9 @@ import "./index.css";
 function App() {
   const[notes, setNotes] = useState([])
   
-  const addNote = (newNote) => {
+  const addNote = (noteData) => {
     setNotes((prevNotes) => {
-      return[newNote, ...prevNotes]
+      return[noteData, ...prevNotes]
     })
   }
 
@@ -22,12 +22,37 @@ function App() {
     })
   }
 
+  const [editingNote, setEditingNote] = useState(null)
+
+  const editNote =(note) => {
+    console.log(note)
+    setEditingNote(note)
+  }
+
+  const updateNote = (updateNote) => {
+    setNotes((prevNotes) => {
+      return prevNotes.map((note) => {
+        if(note.id === updateNote.id) {
+          return updateNote;
+        }
+        return note;
+      })
+    })
+    setEditingNote(null)
+  }
+
   return (
     <div className="h-screen  w-full">
       <Navbar />
       <SearchBar />
-      <NoteForm addNote={addNote} />
-      <NoteList notes={notes} deleteNote={deleteNote} />
+      <NoteForm addNote={addNote} editingNote={editingNote} 
+        updateNote= {updateNote} />
+      <NoteList 
+        notes={notes} 
+        deleteNote={deleteNote} 
+        editNote={editNote} 
+        updateNote= {updateNote}
+      />
     </div>
   );
 }
